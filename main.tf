@@ -1,29 +1,3 @@
-# # 1. Terraform Block
-# terraform {
-#   required_providers {
-#     aws = {
-#       source  = "hashicorp/aws"
-#       version = "~> 6.0"
-#     }
-#   }
-# }
-
-# # 2. Provider Configuration
-# provider "aws" {
-#   region = var.aws_region
-# }
-
-# # 3. Resource Configuration
-# resource "aws_s3_bucket" "product_assets" {
-#   bucket = "${var.project_name}-${var.environment}-product-assets-viru-01"
-
-#   tags = {
-#     Environment = var.environment
-#     Purpose     = "product-assets"
-#   }
-
-# }
-
 terraform {
   required_providers {
     aws = {
@@ -38,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "product_assets" {
-  bucket = "${var.project_name}-${var.environment}-product-assets-viru"
+  bucket = local.bucket_name
 
   tags = {
     Environment = var.environment
